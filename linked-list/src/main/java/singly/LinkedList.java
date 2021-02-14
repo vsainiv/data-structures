@@ -120,6 +120,38 @@ public class LinkedList {
   }
 
   /**
+   * Calculates length of LinkedList Iteratively
+   *
+   * @return length of LinkedList
+   */
+  private int lengthOfLinkedListIteratively() {
+    int count = 0;
+    Node temp = head;
+    while (temp != null) {
+      count++;
+      temp = temp.next;
+    }
+    return count;
+  }
+
+  /**
+   * Calculates length of LinkedList Recursively
+   *
+   * @return length of LinkedList
+   */
+  private int lengthOfLinkedListRecursively() {
+    return lengthOfLinkedList(head);
+  }
+
+  private int lengthOfLinkedList(Node node) {
+    if (node == null) {
+      return 0;
+    }
+
+    return 1 + lengthOfLinkedList(node.next);
+  }
+
+  /**
    * Prints the list
    */
   private void printList() {
@@ -155,6 +187,12 @@ public class LinkedList {
     linkedList.deleteNodeAtGivenPosition(3);
     System.out.println("Linked list after deletion :");
     linkedList.printList();
+
+    System.out.println("Length of Linked list Iteratively :");
+    System.out.println(linkedList.lengthOfLinkedListIteratively());
+
+    System.out.println("Length of Linked list Recursively :");
+    System.out.println(linkedList.lengthOfLinkedListRecursively());
 
     System.out.println("Deleting entire Linked list :");
     linkedList.deleteLinkedList();
